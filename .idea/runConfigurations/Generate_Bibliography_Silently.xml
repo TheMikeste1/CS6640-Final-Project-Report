@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Generate Bibliography Silently" type="BIBTEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory" activateToolWindowBeforeRun="false">
+    <texify-bibtex>
+      <compiler>BIBTEX</compiler>
+      <compiler-path />
+      <compiler-arguments />
+      <envs />
+      <main-file>$PROJECT_DIR$/cibcb2017.tex</main-file>
+      <aux-dir>$PROJECT_DIR$/build/auxil</aux-dir>
+    </texify-bibtex>
+    <method v="2" />
+  </configuration>
+</component>
