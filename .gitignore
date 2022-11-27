@@ -409,3 +409,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 /build/
+/references.bib.sav.tmp
