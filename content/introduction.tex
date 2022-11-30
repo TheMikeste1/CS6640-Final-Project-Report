@@ -3,3 +3,23 @@
 % Problem statement
 % Given: find: such that: (solving a problem)
 % Question if a methodological study
+Reinforcement learning is an extremely powerful tool that is able to solve a multitude
+of problems.
+One such toy problem is known as Waterworld~\cite{Karpathy2015, Ho2016}, which consists
+of an agent chasing food and avoiding poison.
+This problem has been expanded by~\cite{Gupta2017} to include multiple agents,
+turning it into a multi-agent reinforcement learning problem with both cooperative
+and competitive elements.
+
+Waterworld is a fascinating problem with many ways to approach it.
+In the modern version provided by the Farama Foundation~\cite{WaterworldDocumentation},
+agents receive $8 * \text{number of sensors} + 2$ or
+$5 * \text{number of sensors} + 2$ (depending on settings) total observations.
+With the default number of sensors being 30, this is a total of 242 (or 152)
+observations!
+While this sounds like quite a bit, in the world of machine learning it is not too
+much.
+A small 32 x 32 image grayscale image would have 1024 observations, which is already
+considerably larger.
+However, more observations means more processing time, and, when reinforcement
+learning is used for robotics, additional sensors also mean increased cost.
