@@ -31,8 +31,9 @@ we will avoid using imitation learning.
 The Q-learning algorithm works as a stacked Q-learning neural network (or QNN).
 Each action dimension has its own policy QNN, which receive the same input.
 Each policy has $n_\pi$ outputs, where $n >= 2$.
-The continuous space over which the policy operates is divided into $n_\pi$ equal
-partitions, with each output being associated with one partition.
+Since Q-learning works with probabilities for discrete actions, the continuous
+action space over which the policy operates is divided into $n_\pi$ equal partitions,
+with each output being associated with one partition.
 For example, if the continuous actions space interval were $[-1, 1]$ (as it is for
 Waterworld), and a policy has 5 outputs, the partitions would be $-1.0, -0.5, 0.0, 0.5,
 \text{ and } 1.0$.
