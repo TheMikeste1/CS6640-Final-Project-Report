@@ -15,6 +15,7 @@ They discovered parameter-sharing A3C yielded the best results for Waterworld, w
 TRPO performed best for centralized.
 A3C was the only successful model for concurrent.
 
+\subsection{Training Algorithms}\label{subsec:training-algorithms}
 In this study, we apply three common reinforcement learning algorithms, as well as a
 basic controls-agent hybrid, to train our agents.
 Specifically, we use a continuous-space adapted Q-learning algorithm, as well as A2C,
@@ -26,6 +27,7 @@ also relies on having some ``expert'' to show the agent how to act.
 These experts are not always available, and so, in order to generalize our findings,
 we will avoid using imitation learning.
 
+\subsubsection{Q-learning}
 The Q-learning algorithm works as a stacked Q-learning neural network (or QNN).
 Each action dimension has its own policy QNN, which receive the same input.
 Each policy has $n_\pi$ outputs, where $n >= 2$.
