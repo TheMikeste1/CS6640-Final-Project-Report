@@ -10,8 +10,20 @@ of an agent chasing food and avoiding poison.
 This problem has been expanded by~\cite{Gupta2017} to include multiple agents,
 turning it into a multi-agent reinforcement learning problem with both cooperative
 and competitive elements.
+These agents receive readings from sensors connected to their bodies that
+inform the agent on the distance of food, poison, obstacles, or other agents a sensor
+is touching.
+With some settings, these sensors also sense the speed of what they are touching.
+The agent is also made aware when it eats food or poison.
+The goal of Waterworld is to take the input of these sensors and find a way to apply
+thrust to itself such that it consumes as much food as possible while avoiding poison
+and with as little effort as possible.
 
-Waterworld is a fascinating problem with many ways to approach it.
+Waterworld is a fascinating and complex problem with many ways to approach it.
+An agent must learn how to move adeptly in a strange and ever-changing environment.
+Wrong moves or a poorly planned trajectory will lead to the agent consuming poison
+and receiving a significant negative reward.
+Additionally, the agent is bombarded with a slew of information from the environment.
 In the modern version provided by the Farama Foundation~\cite{WaterworldDocumentation},
 agents receive $8 * \text{number of sensors} + 2$ or
 $5 * \text{number of sensors} + 2$ (depending on settings) total observations.
@@ -21,8 +33,12 @@ While this sounds like quite a bit, in the world of machine learning it is not t
 much.
 A small 32 x 32 image grayscale image would have 1024 observations, which is already
 considerably larger.
-However, more observations means more processing time, and, when reinforcement
-learning is used for robotics, additional sensors also mean increased cost.
+Nevertheless, more observations means more processing time, and, when reinforcement
+learning is used for robotics or other real world scenarios, additional sensors also
+mean increased material or financial cost.
+Additionally, the Waterworld agent's information is imperfect, and its observations
+may appear to fluctuate almost randomly as food and poison brush against the sensors,
+which increases the complexity.
 As such, given a reinforcement learning problem, there is a need to determine how to
 build an agent that is simple enough to minimize costs while still being complex.
 enough to solve the problem.
