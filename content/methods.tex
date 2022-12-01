@@ -49,6 +49,7 @@ choose which partition of the discretized space to use.
 The primary difference between the two is A2C uses a policy ``goodness'' or
 ``advantage'' network, called a \textit{critic}, to determine how good the current
 and next states are.
+The critic learns in parallel with the actor.
 Additionally, both the policy and advantage networks can use a shared network to as
 part of their computations.
 
