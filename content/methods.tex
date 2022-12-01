@@ -1,4 +1,38 @@
 \section{Methods}\label{sec:methods}
 % RL method applied
 % Experimental methods, (independent variables, dependent variables, control variables)
+Waterworld has already been tackled by a number of authors.
+Jonathan~Ho~et~al.~\cite{Ho2016} applied imitation learning (specifically, TRPO) to the
+single-agent version of Waterworld using a unique model-free technique, and discovered
+their technique showed promise.
 
+Similarly, Jayesh~K.~Gupta~et~al.~\cite{Gupta2017} similarly applied a number of
+reinforcement learning and imitation learning algorithms to the multi-agent version
+of Waterworld and similar problems.
+These algorithms include TRPO, A3C, and DDPG\@.
+Each was applied using shared parameters, concurrent, and centralized techniques.
+They discovered parameter-sharing A3C yielded the best results for Waterworld, while
+TRPO performed best for centralized.
+A3C was the only successful model for concurrent.
+
+In this study, we apply three common reinforcement learning algorithms, as well as a
+basic controls-agent hybrid, to train our agents.
+Specifically, we use a continuous-space adapted Q-learning algorithm, as well as A2C,
+and DDPO in addition to the hybrid.
+We are not using TPRO because, as outlined by~\cite{Ho2016}, imitation learning tends
+to have difficulty with complex environments and higher-dimensional states.
+While the same authors outlined ways to overcome this obstacle, imitation learning
+also relies on having some ``expert'' to show the agent how to act.
+These experts are not always available, and so, in order to generalize our findings,
+we will avoid using imitation learning.
+
+The Q-learning algorithm works as a stacked Q-learning neural network (or QNN).
+Each action dimension has its own policy QNN, which receive the same input.
+Each policy has $n_\pi$ outputs, where $n >= 2$.
+The continuous space over which the policy operates is divided into $n_\pi$ equal
+partitions, with each output being associated with one partition.
+For example, if the continuous actions space interval were $[-1, 1]$ (as it is for
+Waterworld), and a policy has 5 outputs, the partitions would be $-1.0, -0.5, 0.0, 0.5,
+\text{ and } 1.0$.
+The partition with the highest associated output is selected as the action for that
+dimension.
