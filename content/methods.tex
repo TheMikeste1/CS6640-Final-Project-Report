@@ -40,3 +40,15 @@ The partition with the highest associated output is selected as the action for t
 dimension.
 Essentially, the continuous space is converted to a discrete space that works with
 the QNN\@.
+
+\subsubsection{Advantage Actor-Critic (A2C)}
+A2C, or Advantage Actor-Critic, works similarly to the Q-learning agent.
+Each action dimension has an associated policy, and the policy outputs are used to
+choose which partition of the discretized space to use.
+The primary difference between the two is A2C uses a policy ``goodness'' or
+``advantage'' network, called a ``critic,'' to determine how good the action was.
+Additionally, both the policy and advantage networks can use a shared network to as
+part of their computations.
+
+This setup allows for the agent to determine its own advantage function, which
+allows the system to more easily learn complex problems.
