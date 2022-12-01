@@ -55,3 +55,14 @@ part of their computations.
 
 This setup allows for the agent to determine its own advantage function, which
 allows the system to more easily learn complex problems.
+
+\subsubsection{Deep Deterministic Policy Gradient (DDPG)}
+DDPG operates by having a policy model, called an \textit{actor}, and a ``goodness''
+model, again called a \textit{critic}.
+The actor is able to output continuous values, allowing for more fine-tuned control
+than the discrete-space algorithms.
+As with A2C, the critic determines the ``goodness'' of states, except in DDPG the
+critic determines the ``goodness'' of an action for a state, giving it more control
+over how the agent operates.
+
+
