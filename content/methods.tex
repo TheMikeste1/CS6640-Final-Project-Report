@@ -83,6 +83,8 @@ solution.
 Each algorithm uses one or more neural networks.
 Each neural network we use falls into one of three categories: standard, distance, or
 critic.
+The primary difference between these categories is how the handle the incoming state,
+or observation.
 
 \subsubsection{Standard Networks}
 Standard networks are simple sequential networks.
@@ -107,6 +109,57 @@ Controls-Agent Hybrid agents types.
 They are meant to determine the ``goodness'' of an action for a given observation,
 and so receive both the observation and action as input.
 They can contain the other types of networks to take advantage of their features.
+
+\subsection{Memory}\label{subsec:memory}
+Memory is an important aspect of how the agent learns.
+Without memory, the agent would only be able to learn from the current state, and
+not learn how to get to that state.
+However, rewards in Waterworld are somewhat sporadic and
+sparse~(\autoref{fig:example-episode-rewards}), which makes it difficult for the
+agent to learn which actions are good and which are bad.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.75]
+    {./figures/example-episode-rewards}
+    \caption{
+        Example of instantaneous rewards for a single episode.
+        The x-axis shows the frame, or step, when the reward was received, and the
+        y-axis shows the reward.
+        The high spikes are when the agent manages to eat food, while the low spikes
+        are when the agent eats poison.
+        Very slight dips can be seen as well, which are when the agent applies thrust.
+    }
+    \label{fig:example-episode-rewards}
+\end{figure}
+
+With this in mind, we developed two different types of memory: standard memory and
+reward prioritized memory.
+
+\subsubsection{Standard Memory}
+Standard memory simply keeps track of the current state, actions, rewards, and next
+states.
+It can be sampled to return one or more record, which can then be used to train the
+agent.
+
+\subsubsection{Reward Prioritized Memory}
+Reward prioritized memory is a special type of memory that, as with standard memory,
+keeps track of the current state, actions, rewards, and next states.
+However, it uses a simple algorithm to determine which records are more important/rare
+than others and is more likely to return those memories when sampled.
+
+The algorithm used to determine the rarity of a memory is simple.
+A mean reward of 0 and a standard deviation of 0 are initialized.
+Whenever a record is added to the memory buffer, the mean reward is updated as well as
+the standard deviation.
+When the memory is sampled, the z-score for each record is calculated and serves as
+the record's weight.
+Once all z-scores are calculated, the weights are used to randomly select samples
+from the buffer.
+
+The hope behind this structure was to emphasize those rare rewards and punishments in
+an effort to accelerate learning and guide the agent towards the observations that
+will most benefit the agent.
 
 \subsection{Analysis Methods}\label{subsec:analysis-methods}
 % TODO
