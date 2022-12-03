@@ -80,7 +80,33 @@ to mimic the controller algorithm instead of determining an alternative, higher 
 solution.
 
 \subsection{Model Architecture}\label{subsec:model-architecture}
-% TODO
+Each algorithm uses one or more neural networks.
+Each neural network we use falls into one of three categories: standard, distance, or
+critic.
+
+\subsubsection{Standard Networks}
+Standard networks are simple sequential networks.
+They take input and pass it from layer to layer.
+They can include more complex components, such as convolutional or LSTM layers, but
+they ultimately work as sequential networks that take input and pass between layers
+without any additional processing.
+Most of the standard networks we use consist of only linear layers.
+
+\subsubsection{Distance Networks}
+Distance networks specifically extract the distance parameters from the environment
+observations.
+These distance observations are then piped into a separate network before rejoining the
+rest of the observation.
+The hope behind this style of network is to allow the agent to apply different
+calculations on the distance parameters, in particular convolutions, in order to better
+interpret them.
+
+\subsubsection{Critic Networks}
+Critic networks are special networks specifically built for the DDPG and
+Controls-Agent Hybrid agents types.
+They are meant to determine the ``goodness'' of an action for a given observation,
+and so receive both the observation and action as input.
+They can contain the other types of networks to take advantage of their features.
 
 \subsection{Analysis Methods}\label{subsec:analysis-methods}
 % TODO
