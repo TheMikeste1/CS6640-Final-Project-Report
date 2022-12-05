@@ -120,3 +120,37 @@ It is possible they needed additional time to train, since they add an additiona
 level of complexity.
 
 \subsection{DDPG with CPT}\label{subsec:ddpg-with-cpt}
+This section examines pretraining a DDPG critic using a Controls Policy Trainer.
+Both DDPG agents trained use the same architecture: a distance neural network using
+convolutional layers with a simple linear critic.
+The only difference is the CPT DDPG receives a pre-trained critic.
+This critic continues to train with the actor so the agent is eventually able to
+perform better than the CPT\@.
+However, it is possible to freeze the critic or even temporarily freeze the critic
+until the actor performs similarly to the controller.
+
+As seen in \autoref{fig:cpt-graphs}, the CPT DDPG may have advantages over the normal
+DDPG\@.
+In particular, the loss of the actor starts with a significant dip in loss.
+However, it then proceeds to oscillate around the normal DDPG loss, which may not be
+desirable.
+This may be because the DDPG CPT actor is encountering situations the Trainer had not
+encountered, since the Trainer uses a fairly simple controller.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.5]
+    {./figures/cpt/rewards-by-agent-cpt}
+    \includegraphics[scale=0.5]
+    {./figures/cpt/loss-by-agent-cpt}
+    \caption{
+        \textbf{Top:} Rewards for DDPG vs DDPG with CPT.
+        \textbf{Bottom:} Actor loss for DDPG vs DDPG with CPT.
+        In both cases, the episode is on the x-axis.
+    }
+    \label{fig:cpt-graphs}
+\end{figure}
+
+This technique in particular may be promising and should be further researched.
+By pretraining a strong policy/critic, one can rapidly develop agents and determine
+the best architecture to use for the actor.
