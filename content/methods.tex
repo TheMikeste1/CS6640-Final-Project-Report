@@ -158,9 +158,11 @@ the record's weight.
 Once all z-scores are calculated, the weights are used to randomly select samples
 from the buffer.
 
-The hope behind this structure was to emphasize those rare rewards and punishments in
-an effort to accelerate learning and guide the agent towards the observations that
-will most benefit the agent.
+This technique was inspired by human experiences: one tends to remember particularly
+good and particularly bad memories more than day-to-day, ``normal'' experiences.
+The hope behind RPM is to emphasize those rare rewards and punishments in an effort
+to accelerate learning and guide the agent towards the observations that will most
+benefit the agent.
 
 \subsection{Analysis Methods}\label{subsec:analysis-methods}
 Analyses for this study were primarily based on total episode reward and the time it
