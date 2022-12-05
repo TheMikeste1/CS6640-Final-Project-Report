@@ -85,6 +85,8 @@ thereof, of Reward Prioritized Memory.
 The rewards for each architecture can be seen in
 \autoref{fig:rewards-by-architecture}, which includes both types of networks as well
 the same networks with LSTM layers injected before the output.
+The average reward for each architecture is additionally tabulated in
+\autoref{tab:architecture-average-reward}.
 
 The simple networks include a series of linear layers with LeakyReLu activation
 functions.
@@ -118,6 +120,45 @@ This is strange because the LSTMs should allow the agent to better recognize the
 element of Waterworld, and yet the consistently underperformed.
 It is possible they needed additional time to train, since they add an additional
 level of complexity.
+
+\begin{table}[!htbp]
+    % increase table row spacing, adjust to taste
+    \renewcommand{\arraystretch}{1.3}
+
+    \caption{The average rewards by architecture type.}
+    \label{tab:architecture-average-reward}
+
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Agent Type & Network Type       & Average Reward \\
+        \hhline{|=|=|=|}
+        A2C & Distance       & 86.61          \\
+        \hline
+        A2C & Distance LSTM  & 82.85          \\
+        \hline
+        A2C & Simple         & 87.26          \\
+        \hline
+        A2C & Simple LSTM    & 82.36          \\
+        \hline
+        DDPG & Distance      & 14.53          \\
+        \hline
+        DDPG & Distance LSTM & 35.86          \\
+        \hline
+        DDPG & Simple        & 14.30          \\
+        \hline
+        DDPG & Simple LSTM   & 35.51          \\
+        \hline
+        QNN & Distance       & 7.19           \\
+        \hline
+        QNN & Distance LSTM  & 23.79          \\
+        \hline
+        QNN & Simple         & 10.98          \\
+        \hline
+        QNN & Simple LSTM    & 10.18          \\
+        \hline
+    \end{tabular}
+\end{table}
 
 \subsection{DDPG with CPT}\label{subsec:ddpg-with-cpt}
 This section examines pretraining a DDPG critic using a Controls Policy Trainer.
