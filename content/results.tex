@@ -52,7 +52,9 @@ The average reward for each agent is shown in \autoref{tab:agent-average-reward}
 \end{table}
 
 \subsection{Memory Type}\label{subsec:memory-type}
-test
+The loss by memory type is displayed per agent type in \autoref{fig:loss-by-memory}.
+Specifically, the loss for the actor is used in the case of A2C and DDPG, while QNN
+simply displays ``loss'' since it itself is the actor.
 
 \begin{figure}[!ht]
     \centering
@@ -63,13 +65,21 @@ test
     \includegraphics[scale=0.5]
     {./figures/memory/loss-by-memory-QNN}
     \caption{
-        Rewards by agent type.
-        The x-axis is the episode, while the y-axis is the reward.
+        Loss by memory type for each agent type.
+        The x-axis is the episode, while the y-axis is the loss.
+        Lower loss is better than higher loss.
     }
     \label{fig:loss-by-memory}
 \end{figure}
 
-test
+RPM initially appears to provide better gains in terms of loss.
+Specifically, there is an initial dip in loss, but then the slopes of RPM and normal
+memory seem to converge.
+DDPG especially seems to gain a huge benefit from RPM, but it should be noticed that
+for all agents the advantage provided by RPM is fairly small, typically only
+consisting of hundredths of decimal places, if that.
+Additional experiments should be performed to confirm the effectiveness, or lack
+thereof, of Reward Prioritized Memory.
 
 \subsection{Architecture}\label{subsec:architecture}
 
