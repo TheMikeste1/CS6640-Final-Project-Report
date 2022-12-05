@@ -14,7 +14,7 @@ episodes, so there appears to be something wrong.
     \includegraphics[scale=0.5]
     {./figures/rewards-by-agent}
     \caption{
-        Rewards by agent type.
+        Rewards by agent type achieved during the testing phase of each episode.
         The x-axis is the episode, while the y-axis is the reward.
     }
     \label{fig:rewards-by-agent}
@@ -65,7 +65,7 @@ simply displays ``loss'' since it itself is the actor.
     \includegraphics[scale=0.5]
     {./figures/memory/loss-by-memory-QNN}
     \caption{
-        Loss by memory type for each agent type.
+        Loss by memory type for each agent type per episode.
         The x-axis is the episode, while the y-axis is the loss.
         Lower loss is better than higher loss.
     }
@@ -102,7 +102,8 @@ observations before passing their results to the rest of the network.
     \includegraphics[scale=0.5]
     {./figures/architecture/rewards-by-architecture-QNN}
     \caption{
-        Rewards by architecture type for each agent type.
+        Rewards by architecture type for each agent type from the testing phase for
+        each episode.
         The x-axis is the episode, while the y-axis is the reward.
         Those architectures with LSTM contain a LSTM layer before the output layer.
     }
@@ -185,9 +186,10 @@ encountered, since the Trainer uses a fairly simple controller.
     \includegraphics[scale=0.5]
     {./figures/cpt/loss-by-agent-cpt}
     \caption{
-        \textbf{Top:} Rewards for DDPG vs DDPG with CPT.
-        \textbf{Bottom:} Actor loss for DDPG vs DDPG with CPT.
-        In both cases, the episode is on the x-axis.
+        \textbf{Top:} Rewards for DDPG vs DDPG with CPT per training episode during
+        test phase.
+        \textbf{Bottom:} Actor loss for DDPG vs DDPG with CPT per training episode
+        during test phase.
     }
     \label{fig:cpt-graphs}
 \end{figure}
