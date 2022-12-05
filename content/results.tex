@@ -82,5 +82,41 @@ Additional experiments should be performed to confirm the effectiveness, or lack
 thereof, of Reward Prioritized Memory.
 
 \subsection{Architecture}\label{subsec:architecture}
+The rewards for each architecture can be seen in
+\autoref{fig:rewards-by-architecture}, which includes both types of networks as well
+the same networks with LSTM layers injected before the output.
+
+The simple networks include a series of linear layers with LeakyReLu activation
+functions.
+The distance networks use a series of convolutional layers on the distance
+observations before passing their results to the rest of the network.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.5]
+    {./figures/architecture/rewards-by-architecture-A2C}
+    \includegraphics[scale=0.5]
+    {./figures/architecture/rewards-by-architecture-DDPG}
+    \includegraphics[scale=0.5]
+    {./figures/architecture/rewards-by-architecture-QNN}
+    \caption{
+        Rewards by architecture type for each agent type.
+        The x-axis is the episode, while the y-axis is the reward.
+        Those architectures with LSTM contain a LSTM layer before the output layer.
+    }
+    \label{fig:rewards-by-architecture}
+\end{figure}
+
+Interestingly, the distance networks consistently perform better than the simple
+networks.
+A2C in particular benefited from distance networks.
+This is not too surprising, since the convolutional layers would allow the network to
+extract additional features from what the agent ``sees.''
+What is surprising is the LSTMs consistently performed \textit{worse} than the
+non-LSTM equivalents.
+This is strange because the LSTMs should allow the agent to better recognize the time
+element of Waterworld, and yet the consistently underperformed.
+It is possible they needed additional time to train, since they add an additional
+level of complexity.
 
 \subsection{DDPG with CPT}\label{subsec:ddpg-with-cpt}
